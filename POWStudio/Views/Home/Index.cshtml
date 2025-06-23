@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class=" position-relative overflow-hidden" style="height: 90vh">
+
+    <div class="position-absolute top-0 start-0 w-100" id = "firstSplashBg" style="height: 90vh; overflow: hidden; z-index: 0; pointer-events: none;">
+
+        <!-- 🔹 Nền video -->
+        <div class="position-absolute top-0 start-0 w-100 h-90" style="z-index: 0; pointer-events: none;">
+            <div id="yt-bg" style="width: 100vw; height: 56.25vw;top: -10vh; position: absolute "></div>
+        </div>
+
+        <!-- 🔹 Lớp phủ ảnh -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" id="overlayYTB"
+             style="z-index: 1; transition: opacity 2s ease; opacity: 1; pointer-events: none;">
+            <img src="/Image/ArtworkGame/BadOfGreenThorn capture.jpg" alt="Ảnh phủ"
+                 style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+        </div>
+    </div>
+
+    <!-- 🔸 Nội dung chính căn giữa -->
+    <div class="position-relative d-flex justify-content-center align-items-center vh-100" style="z-index: 5;">
+        <div class="text-center text-white">
+            <h1 class="display-3 fw-bold">Welcome to POW</h1>
+            <p class="lead">Game sáng tạo. Trải nghiệm đỉnh cao.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="display: flex; flex-direction: column; align-items: center; padding: 0; margin: 0;">
+    @foreach (var game in Model)
+    {
+        <div class="content-card" style="background-image: url('@game.BgImageUrl')">
+            <div class="center-content-wrapper">
+                <img class="game-title-image" src="@game.TittleImageUrl"  />
+                <p>@game.Description</p>
+                <a class="button" href="@game.StoreLink" target="_blank"> LEARN MORE » </a>
+            </div>
+        </div>
+    }
+    <footer class="site-footer">
+        <div class="footer-content">
+            <img src="/Image/Logo/POW_Logo_Transparent.png" style="width: auto; height: auto; max-width: 100%; max-height: 60px;" alt="Logo" class="footer-logo" />
+            <div class="footer-info">
+                <p>&copy; 2025 POW studio</p>
+                <p>Viet Nam, Planet Earth</p>
+            </div>
+            <div class="footer-socials">
+                <a href="https://twitter.com/powgamestd" target="_blank">Twitter</a>
+                <a href="https://facebook.com/powgamestd" target="_blank">Facebook</a>
+                <a href="https://youtube.com/powgamestd" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<script>
+    window.addEventListener('scroll', function () {
+        const cards = document.querySelectorAll('.content-card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const offset = rect.top / window.innerHeight;
+            card.style.backgroundPositionY = `${offset * -50}%`;
+        });
+    });
+</script>
+<script>
+    window.addEventListener('scroll', function () {
+        const firstSplashBG = document.getElementById('firstSplashBg');
+        if (firstSplashBG) 
+        {
+            const scrollY = window.scrollY;
+            firstSplashBG.style.transform = `translateY(${scrollY * 0.5}px)`;
+        }
+    });
+</script>
+@* FistSplashBG YTB loaded Callback *@
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    let player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('yt-bg', {
+            videoId: '109bOoM2hSw',
+            playerVars: {
+                autoplay: 1,
+                mute: 1,
+                loop: 1,
+                playlist: '109bOoM2hSw',
+                controls: 0,
+                modestbranding: 1,
+                showinfo: 0,
+                rel: 0
+            },
+            events: {
+                'onStateChange': onStateChangeYTBPlayer
+            }
+        });
+    }
+    //The YT variable is the primary object of the YouTube IFrame Player API. It is only available after the API has been fully loaded.
+    function onStateChangeYTBPlayer(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+            const overlay = document.getElementById('overlayYTB');
+
+            setTimeout(() => { overlay.style.opacity = "0";},3000);
+        }
+    }
+
+
+    // completely reload the web page from scratch if load from "back from cache"
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) { // true = has just been restored from bfcache
+            window.location.reload();
+        }
+    });
+
+    // Nếu API đã có sẵn trong DOM thì gọi lại
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof YT === "object" && typeof YT.Player === "function") {
+            onYouTubeIframeAPIReady();
+        }
+    });
+</script>

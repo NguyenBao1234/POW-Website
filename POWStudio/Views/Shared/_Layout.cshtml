@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - POW</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/POWStudio.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
+</head>
+
+<body>
+<header>
+    <!-- ✅ NAVBAR: đặt ngoài nội dung chính nhưng z-index cao -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-transparent position-absolute top-0 start-0 w-100" style="z-index: 10;">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Logo + EU -->
+            <div class="d-flex align-items-center gap-3">
+                <a class="navbar-brand text-white fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/Image/Logo/POW_Logo_Transparent.png" alt="POW Logo" style="height: 40px;">
+                </a>
+                @* <img src="/Image/Logo/VN_Logo.png" alt="VN" style="height: 30px;"> *@
+            </div>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#">ABOUT US</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">NEWS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">PROJECTS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">CAREERS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid p-0">
+    <main role="main">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2025 - POWStudio - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
