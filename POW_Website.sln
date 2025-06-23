@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POWStudio", "POWStudio\POWStudio.csproj", "{23E7889F-16E5-4F55-8847-27141534213F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POW_Website", "POW_Website\POW_Website.csproj", "{23E7889F-16E5-4F55-8847-27141534213F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
