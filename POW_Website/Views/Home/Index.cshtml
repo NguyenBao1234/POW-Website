@@ -14,16 +14,15 @@
         <!-- 🔹 Lớp phủ ảnh -->
         <div class="position-absolute top-0 start-0 w-100 h-100" id="overlayYTB"
              style="z-index: 1; transition: opacity 2s ease; opacity: 1; pointer-events: none;">
-            <img src="/Image/ArtworkGame/BadOfGreenThorn capture.jpg" alt="Ảnh phủ"
-                 style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+            <img src="/Image/ArtworkGame/BadOfGreenThorn capture.jpg" alt="Ảnh phủ"style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
         </div>
     </div>
 
     <!-- 🔸 Nội dung chính căn giữa -->
-    <div class="position-relative d-flex justify-content-center align-items-center vh-100" style="z-index: 5;">
+    <div class="position-relative d-flex justify-content-center align-items-center vh-100" style="z-index: 2;">
         <div class="text-center text-white">
-            <h1 class="display-3 fw-bold">Welcome to POW</h1>
-            <p class="lead">Game sáng tạo. Trải nghiệm đỉnh cao.</p>
+            <img src="/Image/Logo/POW_Logo_Transparent.png " style="width: auto; height: auto; max-width: 100%; max-height: 120px;"/>
+            <p class="lead mt-4">POW phát triển game indie sáng tạo và đầy cảm hứng.</p>
         </div>
     </div>
 
@@ -36,7 +35,7 @@
             <div class="center-content-wrapper">
                 <img class="game-title-image" src="@game.TittleImageUrl"  />
                 <p>@game.Description</p>
-                <a class="button" href="@game.StoreLink" target="_blank"> LEARN MORE » </a>
+                <a class="button" href="@game.StoreLink" target="_blank"> LEARN MORE &raquo; </a>  @* » *@
             </div>
         </div>
     }
