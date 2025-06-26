@@ -8,3 +8,38 @@
     Learn More &raquo;
 </a>
 <p>Use this page to detail your site's privacy policy.</p>
+
+
+<div class="hero-section">
+    <h1>Đây là phần đầu trang </h1>
+</div>
+
+<div class="scrollCaretButton" id="caret"><div class="caret-icon"></div></div>
+
+<div id="nextSection">
+    <h2>Phần tiếp theo</h2>
+    <p>Cuộn xuống thành công rồi 🎉</p>
+    <p>Đây là phần nội dung test cuộn mượt.</p>
+</div>
+
+<!-- Vùng đầu trang -->
+<div style="height: 100vh; background: #111; color: white; display: flex; justify-content: center; align-items: center;">
+    <h1>Trang đầu</h1>
+</div>
+
+<!-- Nút scroll -->
+<a href="#nextSection" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 32px; color: white; text-decoration: none; z-index: 1000;">
+    ↓
+</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const caret = document.getElementById('caret');
+
+        caret.addEventListener('click', function () {
+            document.querySelector('#nextSection').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>

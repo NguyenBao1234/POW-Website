@@ -76,6 +76,7 @@
 
 
 <script>
+    
     document.addEventListener('DOMContentLoaded', function () {
         updateBackgroundPositions();
         const caret = document.querySelector('.scrollCaretButton');
@@ -136,14 +137,6 @@
         });
     }
     
-    
-    window.addEventListener('load', function() {
-        document.body.classList.remove('hide-initial');
-        document.body.classList.add('fade-in-active'); 
-    });
-</script>
-
-<script>
     window.addEventListener('scroll', function () {
         const cards = document.querySelectorAll('.content-card');
         cards.forEach(card => {
@@ -152,15 +145,40 @@
             card.style.backgroundPositionY = `${offset * -50}%`;
         });
     });
-</script>
 
-<script>
     window.addEventListener('scroll', function () {
         const firstSplashBG = document.getElementById('firstSplashBg');
         if (firstSplashBG)
         {
             const scrollY = window.scrollY;
             firstSplashBG.style.transform = `translateY(${scrollY * 0.5}px)`;
+        }
+    });
+    function activateFadeIn() {
+        document.body.classList.remove('hide-initial');
+        document.body.classList.add('fade-in-active');  
+    }
+
+    function resetFadeOut() {
+        document.body.classList.remove('fade-in-active'); 
+        document.body.classList.add('hide-initial'); 
+    }
+    
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) 
+        {
+            
+            resetFadeOut();
+            setTimeout(() => {
+                activateFadeIn();
+                console.log("Page loaded from BFcache. Re-activating fade-in.");
+            }, 50);
+        } 
+        else 
+        {
+            console.log("Page loaded fresh. Activating fade-in.");
+            resetFadeOut();
+            activateFadeIn()
         }
     });
 </script>

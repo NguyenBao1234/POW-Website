@@ -19,7 +19,7 @@ public class GameService : IGameService
             SteamUrl = "https://store.steampowered.com/app/bedoso-monster",
             ItchioUrl = "https://powstudio.itch.io/bedoso-monster",
             EpicUrl = "https://store.epicgames.com/en-US/p/bedoso-monster",
-            TrailerUrl = "https://youtu.be/109bOoM2hSwhttps://youtu.be/5N7U4Wx3CiM",
+            TrailerUrl = "https://www.youtube.com/embed/hHyBYI8EF-c?si=WrwJn6gHF1ZI4MUF",
         },
         new Game
         {
