@@ -1,13 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+<div class="position-relative overflow-hidden" style="height: 91vh">
 
-<div class=" position-relative overflow-hidden" style="height: 90vh">
-
-    <div class="position-absolute top-0 start-0 w-100" id = "firstSplashBg" style="height: 90vh; overflow: hidden; z-index: 0; pointer-events: none;">
+    <div class="position-absolute top-0 start-0 w-100" id = "firstSplashBg" style="height: 91vh; overflow: hidden; z-index: 0; pointer-events: none;">
 
         <!-- 🔹 Nền video -->
-        <div class="position-absolute top-0 start-0 w-100 h-90" style="z-index: 0; pointer-events: none;">
+        <div class="position-absolute top-0 start-0 w-100 h-91" style="z-index: 0; pointer-events: none;">
             <div id="yt-bg" style="width: 100vw; height: 56.25vw;top: -10vh; position: absolute "></div>
         </div>
 
@@ -22,20 +19,29 @@
     <div class="position-relative d-flex justify-content-center align-items-center vh-100" style="z-index: 2;">
         <div class="text-center text-white">
             <img src="/Image/Logo/POW_Logo_Transparent.png " style="width: auto; height: auto; max-width: 100%; max-height: 120px;"/>
-            <p class="lead mt-4">POW phát triển game indie sáng tạo và đầy cảm hứng.</p>
+            <p class="lead mt-4">POW develops innovative and inspiring indie games.</p>
         </div>
     </div>
 
+    <a class="scrollCaretButton" style="bottom: 10px; z-index: 3;" onclick="smoothScrollTo(document.getElementById('nextSection'))">
+        <div class = "caret-icon"></div>
+    </a>
+    
 </div>
 
-<div class="display: flex; flex-direction: column; align-items: center; padding: 0; margin: 0;">
+<div  id="nextSection" class="display: flex; flex-direction: column; align-items: center; padding: 0; margin: 0;">
     @foreach (var game in Model)
     {
         <div class="content-card" style="background-image: url('@game.BgImageUrl')">
             <div class="center-content-wrapper">
                 <img class="game-title-image" src="@game.TittleImageUrl"  />
-                <p>@game.Description</p>
-                <a class="button" href="@game.StoreLink" target="_blank"> LEARN MORE &raquo; </a>  @* » *@
+                <p>@game.ShortDescription</p>
+                
+                <a asp-controller="Game" asp-action="Detail" asp-route-slug="@game.Slug">
+                    <button class="btn btn-outline-light text-uppercase border-1 rounded-0 " style="transition: all 0.4s ease-in-out;margin-bottom: 1vh;padding: 14px 32px;
+    font-size: 1.1rem;">Learn More &raquo; </button>
+                </a>
+                
             </div>
         </div>
     }
@@ -49,12 +55,54 @@
             <div class="footer-socials">
                 <a href="https://twitter.com/powgamestd" target="_blank">Twitter</a>
                 <a href="https://facebook.com/powgamestd" target="_blank">Facebook</a>
-                <a href="https://youtube.com/powgamestd" target="_blank">YouTube</a>
+                <a href="https://www.youtube.com/c/POWstudio" target="_blank">YouTube</a>
             </div>
         </div>
     </footer>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const caret = document.querySelector('.scrollCaretButton');
+
+        // Appear Toggle Button
+        window.addEventListener('scroll', () => 
+        {
+            if (window.scrollY > 10) {
+                caret.classList.remove('fade-in');
+                caret.classList.add('fade-out');
+            } else {
+                caret.classList.remove('fade-out');
+                caret.classList.add('fade-in');
+            }
+        });
+    });
+    function smoothScrollTo(element)
+    {
+        const targetY = element.getBoundingClientRect().top + window.scrollY;
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        const duration = 600;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startY, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+    }
+</script>
 
 <script>
     window.addEventListener('scroll', function () {
@@ -66,6 +114,7 @@
         });
     });
 </script>
+
 <script>
     window.addEventListener('scroll', function () {
         const firstSplashBG = document.getElementById('firstSplashBg');
@@ -106,8 +155,7 @@
             setTimeout(() => { overlay.style.opacity = "0";},3000);
         }
     }
-
-
+    
     // completely reload the web page from scratch if load from "back from cache"
     window.addEventListener('pageshow', function (event) {
         if (event.persisted) { // true = has just been restored from bfcache
