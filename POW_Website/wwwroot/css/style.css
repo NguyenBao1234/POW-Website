@@ -5,6 +5,13 @@ body {
     margin: 0;
     padding: 0;
     overflow-y: auto;
+    transition: opacity 1s ease-in-out;
+}
+body.hide-initial {
+    opacity: 0;
+}
+body.fade-in-active { 
+    opacity: 1;
 }
 .content {
     position: absolute;

@@ -34,7 +34,11 @@
     {
         <div class="content-card" style="background-image: url('@game.BgImageUrl')">
             <div class="center-content-wrapper">
-                <img class="game-title-image" src="@game.TittleImageUrl"  />
+                <div>
+                    <img class="game-title-image" src="@game.TittleImageUrl"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                    <h1 style="display: none;font-size: 5em; font-weight: bold">@game.Title</h1>
+                </div>
                 <p class="mt-4">@game.ShortDescription</p>
                 
                 <a asp-controller="Game" asp-action="Detail" asp-route-slug="@game.Slug">
@@ -47,70 +51,6 @@
     }
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const caret = document.querySelector('.scrollCaretButton');
-
-        // Appear Toggle Button
-        window.addEventListener('scroll', () => 
-        {
-            if (window.scrollY > 10) {
-                caret.classList.remove('fade-in');
-                caret.classList.add('fade-out');
-            } else {
-                caret.classList.remove('fade-out');
-                caret.classList.add('fade-in');
-            }
-        });
-    });
-    function smoothScrollTo(element)
-    {
-        const targetY = element.getBoundingClientRect().top + window.scrollY;
-        const startY = window.scrollY;
-        const distance = targetY - startY;
-        const duration = 600;
-        let startTime = null;
-
-        function animation(currentTime) {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const run = easeInOutQuad(timeElapsed, startY, distance, duration);
-            window.scrollTo(0, run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
-        }
-
-        function easeInOutQuad(t, b, c, d) {
-            t /= d / 2;
-            if (t < 1) return c / 2 * t * t + b;
-            t--;
-            return -c / 2 * (t * (t - 2) - 1) + b;
-        }
-
-        requestAnimationFrame(animation);
-    }
-</script>
-
-<script>
-    window.addEventListener('scroll', function () {
-        const cards = document.querySelectorAll('.content-card');
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            const offset = rect.top / window.innerHeight;
-            card.style.backgroundPositionY = `${offset * -50}%`;
-        });
-    });
-</script>
-
-<script>
-    window.addEventListener('scroll', function () {
-        const firstSplashBG = document.getElementById('firstSplashBg');
-        if (firstSplashBG) 
-        {
-            const scrollY = window.scrollY;
-            firstSplashBG.style.transform = `translateY(${scrollY * 0.5}px)`;
-        }
-    });
-</script>
 @* FistSplashBG YTB loaded Callback *@
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>

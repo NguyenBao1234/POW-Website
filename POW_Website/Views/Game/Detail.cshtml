@@ -5,8 +5,12 @@
 <div class="position-relative overflow-hidden">
     <div class="content-card" style="background-image: url('@Model.BgImageUrl')">
         <div class="center-content-wrapper">
-            
-            <img class="game-title-image" src="@Model.TittleImageUrl"/>
+
+            <div>
+                <img class="game-title-image" src="@Model.TittleImageUrl"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <h1 style="display: none;font-size: 5em; font-weight: bold">@Model.Title</h1>
+            </div>
 
             <div class="d-flex gap-3 mt-3">
                 @if (!string.IsNullOrEmpty(Model.ItchioUrl))
@@ -54,47 +58,3 @@
 <div style=" display: flex; justify-content: space-around; align-items: center;">
     <iframe width="1400" height="787.5" src="@Model.TrailerUrl"  allowfullscreen style="margin: auto; align-self: center"></iframe>
 </div>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const caret = document.querySelector('.scrollCaretButton');
-
-        // Appear Toggle Button
-        window.addEventListener('scroll', () => 
-        {
-            if (window.scrollY > 10) {
-                caret.classList.remove('fade-in');
-                caret.classList.add('fade-out');
-            } else {
-                caret.classList.remove('fade-out');
-                caret.classList.add('fade-in');
-            }
-        });
-    });
-    function smoothScrollTo(element)
-    {
-        const targetY = element.getBoundingClientRect().top + window.scrollY;
-        const startY = window.scrollY;
-        const distance = targetY - startY;
-        const duration = 600;
-        let startTime = null;
-
-        function animation(currentTime) {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const run = easeInOutQuad(timeElapsed, startY, distance, duration);
-            window.scrollTo(0, run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
-        }
-
-        function easeInOutQuad(t, b, c, d) {
-            t /= d / 2;
-            if (t < 1) return c / 2 * t * t + b;
-            t--;
-            return -c / 2 * (t * (t - 2) - 1) + b;
-        }
-
-        requestAnimationFrame(animation);
-    }
-</script>
