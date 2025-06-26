@@ -24,7 +24,7 @@
     </div>
 
     <a class="scrollCaretButton" style="bottom: 10px; z-index: 3;" onclick="smoothScrollTo(document.getElementById('nextSection'))">
-        <div class = "caret-icon"></div>
+        <div class="caret-wrapper"><div class = "caret-icon"></div></div>
     </a>
     
 </div>
@@ -35,7 +35,7 @@
         <div class="content-card" style="background-image: url('@game.BgImageUrl')">
             <div class="center-content-wrapper">
                 <img class="game-title-image" src="@game.TittleImageUrl"  />
-                <p>@game.ShortDescription</p>
+                <p class="mt-4">@game.ShortDescription</p>
                 
                 <a asp-controller="Game" asp-action="Detail" asp-route-slug="@game.Slug">
                     <button class="btn btn-outline-light text-uppercase border-1 rounded-0 " style="transition: all 0.4s ease-in-out;margin-bottom: 1vh;padding: 14px 32px;
@@ -45,20 +45,6 @@
             </div>
         </div>
     }
-    <footer class="site-footer">
-        <div class="footer-content">
-            <img src="/Image/Logo/POW_Logo_Transparent.png" style="width: auto; height: auto; max-width: 100%; max-height: 60px;" alt="Logo" class="footer-logo" />
-            <div class="footer-info">
-                <p>&copy; 2025 POW studio</p>
-                <p>Viet Nam, Planet Earth</p>
-            </div>
-            <div class="footer-socials">
-                <a href="https://twitter.com/powgamestd" target="_blank">Twitter</a>
-                <a href="https://facebook.com/powgamestd" target="_blank">Facebook</a>
-                <a href="https://www.youtube.com/c/POWstudio" target="_blank">YouTube</a>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <script>

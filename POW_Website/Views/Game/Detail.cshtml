@@ -2,52 +2,99 @@
 @{
     ViewData["Title"] = "— "+@Model.Title;
 }
-<div class="content-card" style="background-image: url('@Model.BgImageUrl')">
-    <div class="center-content-wrapper">
-        <img class="game-title-image" src="@Model.TittleImageUrl"  />
-        <p>@Model.ShortDescription</p>
+<div class="position-relative overflow-hidden">
+    <div class="content-card" style="background-image: url('@Model.BgImageUrl')">
+        <div class="center-content-wrapper">
+            
+            <img class="game-title-image" src="@Model.TittleImageUrl"/>
 
-        <div class="d-flex gap-3 mt-3">
-            @if (!string.IsNullOrEmpty(Model.ItchioUrl))
-            {
-                <a href="@Model.ItchioUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
-                    <img src="https://static.itch.io/images/logo-white-new.svg"
-                         alt="Itch.io" style="height: 30px; filter: brightness(0.8);"/>
-                </a>
-            }
-            
-            @if (!string.IsNullOrEmpty(Model.EpicUrl))
-            {
-                <a href="@Model.EpicUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
-                    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Epic_Games_Store_logo_2023_horizontal_white.svg"
-                         alt="Epic Games" style="height: 40px; filter: brightness(0.8);"/>
-                </a>
-            }
-            
-            @if (!string.IsNullOrEmpty(Model.SteamUrl))
-            {
-                <a href="@Model.SteamUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
-                    <img src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
-                         alt="Steam" style="height: 40px;"/>
-                </a>
-            }
-            @if (!string.IsNullOrEmpty(Model.FabUrl))
-            {
-                <a href="@Model.FabUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
-                    <img src="https://static.fab.com/static/builds/web/dist/frontend/assets/images/common/logo/e1e12dc6142410b391ce48e416261ad7-v1.svg"/>
-                </a>  
-            }
+            <div class="d-flex gap-3 mt-3">
+                @if (!string.IsNullOrEmpty(Model.ItchioUrl))
+                {
+                    <a href="@Model.ItchioUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
+                        <img src="https://static.itch.io/images/logo-white-new.svg"
+                             alt="Itch.io" style="height: 30px; filter: brightness(0.8);"/>
+                    </a>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.EpicUrl))
+                {
+                    <a href="@Model.EpicUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Epic_Games_Store_logo_2023_horizontal_white.svg"
+                             alt="Epic Games" style="height: 40px; filter: brightness(0.8);"/>
+                    </a>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.SteamUrl))
+                {
+                    <a href="@Model.SteamUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
+                        <img src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
+                             alt="Steam" style="height: 40px;"/>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(Model.FabUrl))
+                {
+                    <a href="@Model.FabUrl" target="_blank" style="display: flex;  align-items: center; padding: 0 10px;">
+                        <img src="https://static.fab.com/static/builds/web/dist/frontend/assets/images/common/logo/e1e12dc6142410b391ce48e416261ad7-v1.svg"/>
+                    </a>
+                }
+            </div>
         </div>
-    </div>
-    <div class="center-content-wrapper" style="width: 25%">
 
-        <p>@Model.DetailedDescription</p>
     </div>
+    
+    <a class="scrollCaretButton" style="bottom: 10px; z-index: 3;" onclick="smoothScrollTo(document.getElementById('nextSection'))">
+        <div class="caret-wrapper"><div class = "caret-icon"></div></div>
+    </a>
 </div>
-<div class="centered-text-container">
-    <p>Nội dung chữ của bạn ở đây.</p>
-    <p>Bạn có thể thêm nhiều đoạn văn hoặc các phần tử khác.</p>
+<div id = "nextSection" class="centered-text-container">
+    <h2>@Model.ShortDescription</h2>
+    <p>@Model.DetailedDescription</p>
 </div>
-<div class="mt-4">
-    <iframe width="100%" height="400" src="@Model.TrailerUrl" frameborder="0" allowfullscreen></iframe>
+<div style=" display: flex; justify-content: space-around; align-items: center;">
+    <iframe width="1400" height="787.5" src="@Model.TrailerUrl"  allowfullscreen style="margin: auto; align-self: center"></iframe>
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const caret = document.querySelector('.scrollCaretButton');
+
+        // Appear Toggle Button
+        window.addEventListener('scroll', () => 
+        {
+            if (window.scrollY > 10) {
+                caret.classList.remove('fade-in');
+                caret.classList.add('fade-out');
+            } else {
+                caret.classList.remove('fade-out');
+                caret.classList.add('fade-in');
+            }
+        });
+    });
+    function smoothScrollTo(element)
+    {
+        const targetY = element.getBoundingClientRect().top + window.scrollY;
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        const duration = 600;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startY, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+    }
+</script>

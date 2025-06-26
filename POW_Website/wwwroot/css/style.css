@@ -86,7 +86,6 @@ body {
     background-color: white;
     color: black;
 }
-
 .scrollCaretButton {
     position: absolute;
     bottom: 40px;
@@ -98,14 +97,17 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.3s ease;
     opacity: 0.8;
 }
 
-.scrollCaretButton:hover {
-    opacity: 1;
-    transform: translateX(-50%) translateY(5px);
+.caret-wrapper {
+    transition: transform 0.3s ease;
 }
+
+.scrollCaretButton:hover .caret-wrapper {
+    transform: translateY(5px);
+}
+
 
 .scrollCaretButton .caret-icon {
     width: 30px;
@@ -182,4 +184,43 @@ body {
 
 .footer-socials a:hover {
     color: white;
+}
+.centered-text-container {
+    max-width: 1225px; /* Đặt chiều rộng tối đa cho container */
+    margin: 0 auto;
+    padding: 100px 40px; /* Khoảng đệm bên trong container (trên dưới 30px, trái phải 40px) */
+    border-radius: 8px; /* Bo tròn góc */
+    text-align: justify; /* Căn chỉnh văn bản justified */
+    hyphens: auto; /* Cho phép tự động ngắt từ nếu cần để justified đẹp hơn */
+    text-justify: inter-word; 
+}
+
+.centered-text-container h2 {
+    font-size: 2em; /* Kích thước tiêu đề */
+    margin-bottom: 20px;
+    color: #fff; /* Màu tiêu đề */
+    letter-spacing: 2px; /* Khoảng cách chữ */
+}
+
+.centered-text-container p {
+    font-size: 1.1em; /* Kích thước chữ đoạn văn */
+    margin-bottom: 15px;
+    line-height: 1.8; /* Chiều cao dòng */
+    color: #e0e0e0; /* Màu chữ đoạn văn hơi xám */
+}
+
+.centered-text-container ul {
+    list-style: none; /* Bỏ dấu chấm đầu dòng của list */
+    padding: 0;
+    margin-top: 30px;
+}
+
+.centered-text-container ul li {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.centered-text-container ul li strong {
+    color: #fff;
 }
