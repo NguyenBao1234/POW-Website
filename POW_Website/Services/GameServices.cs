@@ -31,7 +31,7 @@ public class GameService : IGameService
             BgImageUrl = "/Image/ArtworkGame/HorrorSerumArtwork.jpg",
             ItchioUrl = "https://powstudio.itch.io/horrorserum",
             DetailedDescription = "Horror Serum, you will experience the horror from a first-person perspective, discovering a dark story surrounding a mysterious serum. This solution promises extraordinary power, but the price to pay may be beyond imagination.",
-            TrailerUrl = "https:www.youtube.com/embed/y8PKcCArLQ0?si=AyBEMqYDRoU6cIVM"
+            TrailerUrl = "https://www.youtube.com/embed/y8PKcCArLQ0?si=AyBEMqYDRoU6cIVM"
         },
         new Game
         {
@@ -42,7 +42,7 @@ public class GameService : IGameService
             BgImageUrl = "/Image/ArtworkGame/BadOfGreenThorn capture.jpg",
             ItchioUrl = "https://powstudio.itch.io/bad-of-greenthorn",
             DetailedDescription = "Bad of Greenthorn is a 2D hack and slash action platformer that takes you on a thrilling adventure! As the hero of the kingdom, you will embark on a dangerous journey to destroy the treacherous mage Greenthorn - who has spread chaos and darkness everywhere.",
-            TrailerUrl = "https:www.youtube.com/embed/UOMMnQUUchM?si=PcooWto9nK3Z7dLe"
+            TrailerUrl = "https://www.youtube.com/embed/UOMMnQUUchM?si=PcooWto9nK3Z7dLe"
         },
         new Game
         {
@@ -52,7 +52,7 @@ public class GameService : IGameService
             BgImageUrl = "/Image/ArtworkGame/PaperInteractive16div9.png",
             ItchioUrl = "https://powstudio.itch.io/interactive-paper-effect-ue",
             FabUrl = "https://fab.com/s/96b6838c5448",
-            TrailerUrl = "https:www.youtube.com/embed/aoogGi-WoGo?si=IsxShWRyt3uTv8Kb"
+            TrailerUrl = "https://www.youtube.com/embed/aoogGi-WoGo?si=IsxShWRyt3uTv8Kb"
         }
     };
 
