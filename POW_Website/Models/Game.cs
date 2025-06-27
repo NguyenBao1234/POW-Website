@@ -1,3 +1,5 @@
+using System.Dynamic;
+
 namespace POWStudio.Models;
 
 public class Game
@@ -8,6 +10,7 @@ public class Game
     public string? ShortDescription { get; set; } = string.Empty;
     public string? DetailedDescription { get; set; } = string.Empty;
     public string? BgImageUrl { get; set; } = string.Empty;
+    public bool bPublic { get; set; } = true;
     public string? TrailerUrl { get; set; }
     public string? ItchioUrl { get; set; } = string.Empty;
     public string? SteamUrl { get; set; }

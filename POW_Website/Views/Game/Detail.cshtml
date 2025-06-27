@@ -55,6 +55,8 @@
     <h2>@Model.ShortDescription</h2>
     <p>@Model.DetailedDescription</p>
 </div>
+
 <div style=" display: flex; justify-content: space-around; align-items: center;">
-    <iframe width="1400" height="787.5" src="@Model.TrailerUrl"  allowfullscreen style="margin: auto; align-self: center"></iframe>
+    @if (@Model.bPublic) { <iframe width="1400" height="787.5" src=@Model.TrailerUrl allowfullscreen style="margin: auto; align-self: center"></iframe> }
+    else {<h1 style="height: 787.5px; display: flex; justify-content: center; align-items: center; font-size: 3em; color: #666">Project will be public later</h1>}
 </div>

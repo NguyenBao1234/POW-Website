@@ -10,9 +10,10 @@ public class GameService : IGameService
     {
         new Game
         {
+            bPublic = false,
             Title = "Bedoso Monster",
             Slug = "bedoso-monster",
-            ShortDescription = "A dark survival horror game.",
+            ShortDescription = "Where peace once lived, monsters now rule",
             DetailedDescription = "Enter Bedoso Monster, a tense third-person shooter where you will face the nameless horrors lurking in the deserted town of Bedoso. After a mysterious event, this once peaceful town is now plunged into darkness and taken over by hideous monsters of unknown origin.",
             TittleImageUrl = "/Image/Logo/BedosoMonsterTitleWhite.png",
             BgImageUrl = "/Image/ArtworkGame/BedosoMonsterBG.jpg",
@@ -26,20 +27,22 @@ public class GameService : IGameService
             Title = "Horror Serum",
             Slug = "horrorserum",
             TittleImageUrl = "/Image/Logo/HorrorSerumTitle.png",
-            ShortDescription = "A dark survival horror game.",
+            ShortDescription = "It promised power. It delivered torment.",
             BgImageUrl = "/Image/ArtworkGame/HorrorSerumArtwork.jpg",
             ItchioUrl = "https://powstudio.itch.io/horrorserum",
-            DetailedDescription = "Horror Serum, you will experience the horror from a first-person perspective, discovering a dark story surrounding a mysterious serum. This solution promises extraordinary power, but the price to pay may be beyond imagination."
+            DetailedDescription = "Horror Serum, you will experience the horror from a first-person perspective, discovering a dark story surrounding a mysterious serum. This solution promises extraordinary power, but the price to pay may be beyond imagination.",
+            TrailerUrl = "https:www.youtube.com/embed/y8PKcCArLQ0?si=AyBEMqYDRoU6cIVM"
         },
         new Game
         {
             Title = "Bad Of Greenthorn",
             Slug = "bad-of-greenthorn",
             TittleImageUrl = "/Image/Logo/BadOfGreenThornTitleWhite.png",
-            ShortDescription = "Puzzle-based psychological thriller.",
+            ShortDescription = "A fallen mage. A cursed land. One last hope.",//Strike down darkness. Save the kingdom.
             BgImageUrl = "/Image/ArtworkGame/BadOfGreenThorn capture.jpg",
             ItchioUrl = "https://powstudio.itch.io/bad-of-greenthorn",
-            DetailedDescription = "Bad of Greenthorn is a 2D hack and slash action platformer that takes you on a thrilling adventure! As the hero of the kingdom, you will embark on a dangerous journey to destroy the treacherous mage Greenthorn - who has spread chaos and darkness everywhere."
+            DetailedDescription = "Bad of Greenthorn is a 2D hack and slash action platformer that takes you on a thrilling adventure! As the hero of the kingdom, you will embark on a dangerous journey to destroy the treacherous mage Greenthorn - who has spread chaos and darkness everywhere.",
+            TrailerUrl = "https:www.youtube.com/embed/UOMMnQUUchM?si=PcooWto9nK3Z7dLe"
         },
         new Game
         {
@@ -48,9 +51,9 @@ public class GameService : IGameService
             ShortDescription = "Tool for interactive paper game.",
             BgImageUrl = "/Image/ArtworkGame/PaperInteractive16div9.png",
             ItchioUrl = "https://powstudio.itch.io/interactive-paper-effect-ue",
-            FabUrl = "https://fab.com/s/96b6838c5448"
+            FabUrl = "https://fab.com/s/96b6838c5448",
+            TrailerUrl = "https:www.youtube.com/embed/aoogGi-WoGo?si=IsxShWRyt3uTv8Kb"
         }
-        // Thêm game khác ở đây...
     };
 
     public Game? GetBySlug(string slug)
