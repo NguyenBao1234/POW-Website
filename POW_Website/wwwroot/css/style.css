@@ -145,7 +145,7 @@ body.fade-in-active {
     border-left: 2px solid white;
     border-bottom: 2px solid white;
     transform: rotate(-45deg);
-    margin-top: -4px; /* cân chỉnh giữa khung */
+    margin-top: -4px; 
 }
 
 .scrollCaretButton.fade-out {
@@ -216,31 +216,30 @@ body.fade-in-active {
     color: white;
 }
 .centered-text-container {
-    max-width: 1225px; /* Đặt chiều rộng tối đa cho container */
+    max-width: 1225px;
     margin: 0 auto;
-    padding: 100px 40px; /* Khoảng đệm bên trong container (trên dưới 30px, trái phải 40px) */
-    border-radius: 8px; /* Bo tròn góc */
-    text-align: justify; /* Căn chỉnh văn bản justified */
-    hyphens: auto; /* Cho phép tự động ngắt từ nếu cần để justified đẹp hơn */
+    padding: 100px 40px;
+    text-align: justify;
+    hyphens: auto; /*auto break line*/
     text-justify: inter-word; 
 }
 
 .centered-text-container h2 {
-    font-size: 2em; /* Kích thước tiêu đề */
+    font-size: 2em;
     margin-bottom: 20px;
-    color: #fff; /* Màu tiêu đề */
-    letter-spacing: 2px; /* Khoảng cách chữ */
+    color: #fff; 
+    letter-spacing: 2px; 
 }
 
 .centered-text-container p {
-    font-size: 1.1em; /* Kích thước chữ đoạn văn */
+    font-size: 1.1em;
     margin-bottom: 15px;
-    line-height: 1.8; /* Chiều cao dòng */
-    color: #e0e0e0; /* Màu chữ đoạn văn hơi xám */
+    line-height: 1.8; 
+    color: #e0e0e0; 
 }
 
 .centered-text-container ul {
-    list-style: none; /* Bỏ dấu chấm đầu dòng của list */
+    list-style: none;
     padding: 0;
     margin-top: 30px;
 }

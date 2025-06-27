@@ -7,7 +7,7 @@
         <div class="center-content-wrapper">
 
             <div>
-                <img class="game-title-image" src="@Model.TittleImageUrl"
+                <img style="object-fit: cover;  width: 100%" class="game-title-image" src="@Model.TittleImageUrl"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
                 <h1 style="display: none;font-size: 5em; font-weight: bold">@Model.Title</h1>
             </div>
@@ -56,7 +56,21 @@
     <p>@Model.DetailedDescription</p>
 </div>
 
-<div style=" display: flex; justify-content: space-around; align-items: center;">
-    @if (@Model.bPublic) { <iframe width="1400" height="787.5" src=@Model.TrailerUrl allowfullscreen style="margin: auto; align-self: center"></iframe> }
-    else {<h1 style="height: 787.5px; display: flex; justify-content: center; align-items: center; font-size: 3em; color: #666">Project will be public later</h1>}
+<div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    @if (@Model.bPublic)
+    {
+        <div style="width: 73vw; aspect-ratio: 16 / 9;">
+            <iframe
+                src="@Model.TrailerUrl"
+                allowfullscreen
+                style="width: 100%; height: 100%; border: none; display: block; margin: auto;">
+            </iframe>
+        </div>
+    }
+    else
+    {
+        <div style="width: 73vw; aspect-ratio: 16 / 9; display: flex; justify-content: center; align-items: center;">
+            <h1 style="font-size: 3em; color: #666; text-align: center;">Project will be public later</h1>
+        </div>
+    }
 </div>
