@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# User settings
+.vscode
+*.user
+*.suo
+
+# Build outputs
+bin/
+obj/
+out/
+
+# Logs
+*.log
+
+# OS-specific
+Thumbs.db
+Desktop.ini
+
+# Dockerignore itself (optional)
+.dockerignore
