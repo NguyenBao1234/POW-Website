@@ -1,3 +1,26 @@
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-45%, -45%);
+    
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(1px); 
+    -webkit-backdrop-filter: blur(1px);  /* Safari support */
+    transition: transform 0.25s ease-out;
+}
+.custom-cursor.cursor-hover {
+    transform: scale(0.5) translate(-90%, -90%);
+    backdrop-filter: blur(0.05px); 
+    -webkit-backdrop-filter: blur(0.05px);
+}
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #000;
@@ -86,7 +109,7 @@ body.fade-in-active {
     border-radius: 1px;
     color: white;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.4s, color 0.s;
 }
 
 .button:hover {
